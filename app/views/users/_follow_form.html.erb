@@ -1,0 +1,11 @@
+<% unless current_user == @user %>
+	<% if current_user.following?(@user) %>
+		<div class="input-group" style="width:340px;margin:0 auto;">
+    		<%= link_to "Unfollow", user_follow_path(@user.id, @user.id), :method => :delete, :class => "btn btn-lg btn-primary" %>
+		</div>
+	<% else %>
+		<div class="input-group" style="width:340px;margin:0 auto;">
+    		<%= link_to "Follow", user_follow_index_path(@user.id), :method => :post, :class => "btn btn-lg btn-primary" %>
+		</div>
+	<% end %>
+<% end %>

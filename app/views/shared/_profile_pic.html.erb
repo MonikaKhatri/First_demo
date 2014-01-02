@@ -1,0 +1,11 @@
+<% if user_signed_in? %>
+	<% if @user.oauth_token == nil %>
+		<% if @user.photo.exists? %>
+			<%= image_tag @user.photo.url(:small) %>
+		<% else %>
+			<%= image_tag "GenericProfile.png", :size => "150x150" %>
+		<% end %>
+	<% else %>
+		<%= image_tag "http://graph.facebook.com/#{@user.uid}/picture?type=large" %>
+	<% end %>
+<% end %>

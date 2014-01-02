@@ -1,0 +1,27 @@
+<div class="col-lg-12 text-center v-center">
+<h1>Sign in</h1>
+</div>
+<div class="input-group" style="width:340px;margin:0 auto;">
+
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :class => "col-lg-12") do |f| %>
+
+  <p class="lead"> Email 
+
+  <%= f.email_field :email, :autofocus => true, :class => "form-control input-lg", :placeholder => "Enter Email"%>
+</p>
+<br><br>
+<p class="lead"> Password 
+  <%= f.password_field :password , :class => "form-control input-lg"%>
+  </p><br><br>
+
+  <% if devise_mapping.rememberable? %>
+    <%= f.check_box :remember_me %> <%= f.label :remember_me, :class => "lead" %>
+  <% end %>
+  
+
+  <div class="col-lg-12 text-center v-center">
+    <%= f.submit "Sign in", :class => "btn btn-lg btn-primary" %></div>
+  </div>
+<% end %>
+</div>
+<%= render "devise/shared/links" %>

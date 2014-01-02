@@ -1,0 +1,62 @@
+<center>
+<h1>
+	Albums
+    <% if current_user == @user %>
+        <%= link_to "New", new_user_album_path(@user), class: "btn btn-primary btn-lg" %>
+    <% end %>
+</h1>
+<div class="container">
+    <div class="row">
+        <% @albums.each do |album| %>
+            <div class="col-md-4">
+             	<div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3>
+                            <%= link_to album.name, user_album_path(@user.id,album), {:style=>'color:#110022;'} %>
+                        </h3>
+                        <% if current_user == @user %>
+                            <%= album.privacy %>
+                        <% end %>
+                    </div>
+                    <div class="panel-body panelbodylead">
+                        <% if album.photos.count != 0 %>
+                            <%= image_tag album.photos.first.pic.url, :size => "150x150" %>
+                            <% if album.photos.count > 1 %>
+                                <%= image_tag album.photos.last.pic.url, :size => "150x150" %>
+                            <% end %>
+                        <% end %>
+                	</div>
+                    <% if current_user == @user %>
+                        <%= link_to "Delete", user_album_path(@user.id,album), method: :delete, class: "btn btn-danger btn-lg" %>
+                    <% end %>
+                </div>
+            </div>   
+        <% end %>
+        <% if @user.oauth_token != nil %>
+            <div class="container">
+                <div class="row">
+                    <% @fbalbums.each do |fbalbum| %>
+                        <div class="col-md-3">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3>
+                                        <%= link_to fbalbum.name, user_album_path(@user,fbalbum.identifier), {:style=>'color:#110022;'} %>
+                                    </h3>
+                                </div>
+                                <div class="panel-body panelbodylead">
+                                    <% if fbalbum.photos.count != 0 %>
+                                        <%= image_tag fbalbum.photos.first.source, :size => "150x150" %>
+                                        <% if album.photos.count > 1 %>
+                                            <%= image_tag fbalbum.photos.last.source, :size => "150x150" %>
+                                        <% end %>
+                                    <% end %>
+                                </div>
+                            </div>
+                        </div>   
+                    <% end %>
+                </div> 
+            </div>
+        <% end %>
+    </div> 
+</div>
+</center>

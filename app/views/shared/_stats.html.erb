@@ -1,0 +1,14 @@
+<% @user ||= current_user %>
+
+<td>
+<h1 class="lead">
+<%= link_to "#{@user.follow_count} Following", user_follow_path(@user.id, @user.id, :info => "following"), {:style=>'color:#DDCCEE;'} %>
+</h1>
+</td>
+<td>
+<h1 class="lead">
+<%= link_to "#{@user.followers_count} Followers", user_follow_path(@user.id, @user.id, :info => "followers"), {:style=>'color:#DDCCEE;'} %>
+</h1>
+</td>
+
+

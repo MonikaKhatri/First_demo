@@ -1,0 +1,27 @@
+<div class="col-lg-12 text-center v-center">
+    <%= render :partial => "/shared/search" %>
+<%= will_paginate @user %>
+    <div class="container"><hr>
+        <div class="row">
+            <% @user.each do |user| %>
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading"><h3><%= link_to user.username, user_path(user), {:style=>'color:#110022;'} %></h3>
+                        </div>
+                        <div class="panel-body panelbodylead">
+            	            <b>Email Address :</b>
+                            <%= user.email %><br>
+                            <b>Location : </b>
+                            <%= user.location %>
+                        </div>
+                    </div>
+                </div>   
+            <% end %>
+        </div> 
+    </div> 
+<%= will_paginate @user %>
+</div>
+
+
+
+  

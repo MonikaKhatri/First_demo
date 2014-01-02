@@ -1,0 +1,21 @@
+<h2 class="lead"><%= @user.username %>'s Friend List </h2><hr>
+<div class="container">
+  <div class="row">
+  <% @user.user_followers.each do |follower| %>
+      <% @user.following_users.each do |following| %>
+       <% if follower == following %>
+      <div class="col-md-4">
+            <div class="panel panel-default">
+               <div class="panel-heading"><h3><%= link_to follower.username, user_path(follower), {:style=>'color:#110022;'} %></h3></div>
+               <div class="panel-body panelbodylead">
+                <b>Email Address :</b><%= follower.email %><br>
+                <b>Location : </b><%= follower.location %>
+              </div>
+            </div>
+          </div>
+           <% end %>
+         <% end %>
+        <% end %>
+      </div>   
+      </div> 
+  </div> 

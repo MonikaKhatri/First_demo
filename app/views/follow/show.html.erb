@@ -1,0 +1,30 @@
+<div class="col-lg-12 text-center v-center">
+
+	<% if params[:info] == "followers"%>
+		<h1><font size="12">List of followers of <%= User.find(params[:user_id]).username %></font></h1>
+	<% else %>
+		<h1>
+            <font size="12">
+                List of followed users of <%= User.find(params[:user_id]).username %>
+            </font>
+        </h1>
+	<% end %>
+</div>
+<div class="container"><hr>
+    <div class="row">
+        <% @follow.each do |follow| %>
+        	<div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><h3><%= link_to follow.username, user_path(follow), {:style=>'color:#110022;'} %></h3>
+                    </div>
+                    <div class="panel-body panelbodylead">
+            	            <b>Email Address :</b>
+                            <%= follow.email %><br>
+                            <b>Location : </b>
+                            <%= follow.location %>
+                    </div>
+                </div>
+            </div>   
+        <% end %>
+    </div> 
+</div>
