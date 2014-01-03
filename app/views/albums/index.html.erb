@@ -46,7 +46,7 @@
                                 <div class="panel-body panelbodylead">
                                     <% if fbalbum.photos.count != 0 %>
                                         <%= image_tag fbalbum.photos.first.source, :size => "150x150" %>
-                                        <% if album.photos.count > 1 %>
+                                        <% if fbalbum.photos.count > 1 %>
                                             <%= image_tag fbalbum.photos.last.source, :size => "150x150" %>
                                         <% end %>
                                     <% end %>
